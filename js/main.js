@@ -27,5 +27,8 @@ $(window).load(function(){
 
     $('#before').text('元の文字列: 「' + inputText + '」(' + inputText.length + '文字)');
     $('#after').text('残った文字列: 「' + resultText + '」(' + resultText.length + '文字)');
+
+    let str = resultText.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    $('#sub').html('↓コピペ用<br><br>#ババ抜きワードクイズ<br>' + str + '(' + inputText.length + ')');
   }
 });
