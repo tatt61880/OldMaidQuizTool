@@ -25,10 +25,7 @@ $(window).load(function(){
       }
     }
 
-    $('#before').text('元の文字列: 「' + inputText + '」');
-    $('#after').text('残った文字列: 「' + resultText + '」');
-
-    let sub = '元の文字列の長さ: ' + inputText.length + '<br>残った文字列の長さ: ' + resultText.length;
-    $('#len').html(sub);
+    $('#before').text('元の文字列: 「' + inputText + '」(' + inputText.length + '文字)');
+    $('#after').text('残った文字列: 「' + resultText + '」(' + resultText.length + '文字)');
   }
 });
