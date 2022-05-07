@@ -1,37 +1,39 @@
-$(window).load(function(){
+window.onload = function() {
   'use strict';
+  const version = 'Version: 2022.05.08';
+
   const elemText = document.getElementById('inputText');
   elemText.addEventListener('input', update, false);
   update();
+  document.getElementById('versionInfo').innerText = version;
 
-  function update(){
-    const inputText = $('#inputText').val();
+
+  function update() {
+    const inputText = document.getElementById('inputText').value;
 
     let resultText = inputText;
     let i = 0;
-    while(true){
-      if(i >= resultText.length - 1) break;
+    for (;;) {
+      if (i >= resultText.length - 1) break;
       const ci = resultText.charAt(i);
       let flag = false;
-      for(let j = i + 1; j < resultText.length; j++){
+      for (let j = i + 1; j < resultText.length; j++) {
         const cj = resultText.charAt(j);
-        if(ci == cj){
-          // console.log('ci=' + ci + ', cj=' + cj + ', i=' + i + ', j=' + j);
+        if (ci == cj) {
           flag = true;
           resultText = resultText.substring(0, i) + resultText.substring(i + 1, j) + resultText.substring(j + 1);
-          // console.log(resultText);
           break;
         }
       }
-      if(!flag){
+      if (!flag) {
         i++;
       }
     }
 
-    $('#before').text('元の文字列: 「' + inputText + '」(' + inputText.length + '文字)');
-    $('#after').text('残った文字列: 「' + resultText + '」(' + resultText.length + '文字)');
+    document.getElementById('before').innerText = `元の文字列: 「${inputText}」(${inputText.length}文字)`;
+    document.getElementById('after').innerText = `残った文字列: 「${resultText}」(${resultText.length}文字)`;
 
-    let str = resultText.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
-    $('#sub').html('<h2>結果(コピペ用)</h2>#ババ抜きワードクイズ<br>' + str + '(' + inputText.length + ')');
+    const str = resultText.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    document.getElementById('sub').innerHTML = `#ババ抜きワードクイズ<br>${str}(${inputText.length})`;
   }
-});
+};
