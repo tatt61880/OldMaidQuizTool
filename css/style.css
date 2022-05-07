@@ -42,9 +42,12 @@ div.skyblue {
 }
 
 button {
-  height: 40px;
   margin: 5px;
-  border-radius: 10px;
+  padding: 5px 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: green;
+  border-radius: 15px;
   background-color: lightgreen;
   border: solid 3px green;
 }
