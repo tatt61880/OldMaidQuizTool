@@ -1,8 +1,11 @@
 $(window).load(function(){
-  $('#input-text').change(update);
+  'use strict';
+  const elemText = document.getElementById('inputText');
+  elemText.addEventListener('input', update, false);
+  update();
 
   function update(){
-    const inputText = $('#input-text').val();
+    const inputText = $('#inputText').val();
 
     let resultText = inputText;
     let i = 0;
@@ -29,6 +32,6 @@ $(window).load(function(){
     $('#after').text('残った文字列: 「' + resultText + '」(' + resultText.length + '文字)');
 
     let str = resultText.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
-    $('#sub').html('↓コピペ用<br><br>#ババ抜きワードクイズ<br>' + str + '(' + inputText.length + ')');
+    $('#sub').html('<h2>結果</h2>#ババ抜きワードクイズ<br>' + str + '(' + inputText.length + ')');
   }
 });
