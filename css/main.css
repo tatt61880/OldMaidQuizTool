@@ -12,7 +12,7 @@ body {
   margin: auto;
   padding: 0;
   text-align: center;
-  background-color: #ffffff;
+  background-color: white;
 }
 
 h1 {
@@ -29,11 +29,7 @@ h2 {
 
 div.inner {
   margin: 5px;
-}
-
-div.pink {
-  margin-bottom: 5px;
-  border: solid 3px pink;
+  padding-bottom: 5px;
 }
 
 div.skyblue {
@@ -61,4 +57,9 @@ button:hover {
   width: 350px;
   margin: 5px;
   font-size: 16px;
+}
+
+#version-info {
+  color: lightgray;
+  font-weight: bold;
 }
