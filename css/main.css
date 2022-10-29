@@ -62,4 +62,5 @@ button:hover {
 #version-info {
   color: lightgray;
   font-weight: bold;
+  font-size: 0.9rem;
 }
