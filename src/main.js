@@ -1,17 +1,17 @@
 (function() {
   'use strict';
-  const version = 'Version: 2022.05.09';
+  const version = 'Version: 2022.10.29';
 
   window.onload = function() {
-    document.getElementById('versionInfo').innerText = version;
-    document.getElementById('inputText').addEventListener('input', update, false);
-    document.getElementById('clipResult').addEventListener('click', clipResult, false);
+    document.getElementById('version-info').innerText = version;
+    document.getElementById('input-text').addEventListener('input', update, false);
+    document.getElementById('clip-result').addEventListener('click', clipResult, false);
 
     update();
-  }
+  };
 
   function update() {
-    const inputText = document.getElementById('inputText').value;
+    const inputText = document.getElementById('input-text').value;
 
     let resultText = inputText;
     let i = 0;
@@ -45,10 +45,10 @@
   }
 
   function setClipboard(clipboardText) {
-    if(navigator.clipboard == undefined) {
-        window.clipboardData.setData('Text', clipboardText);
+    if (window.navigator.clipboard == undefined) {
+      window.clipboardData.setData('Text', clipboardText);
     } else {
-        navigator.clipboard.writeText(clipboardText);
+      window.navigator.clipboard.writeText(clipboardText);
     }
   }
 })();

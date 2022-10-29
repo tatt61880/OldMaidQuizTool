@@ -3,26 +3,26 @@ html {
 }
 
 body {
-  margin: 0px;
+  margin: 0;
   background-color: #ccffff;
 }
 
 #contents {
   width: 500px;
   margin: auto;
-  padding: 0px;
+  padding: 0;
   text-align: center;
   background-color: #ffffff;
 }
 
 h1 {
-  margin: 0px;
+  margin: 0;
   background-color: pink;
   font-size: 18px;
 }
 
 h2 {
-  margin: 0px;
+  margin: 0;
   background-color: skyblue;
   font-size: 18px;
 }
@@ -50,4 +50,15 @@ button {
   border-radius: 15px;
   background-color: lightgreen;
   border: solid 3px green;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: palegreen;
+}
+
+#input-text {
+  width: 350px;
+  margin: 5px;
+  font-size: 16px;
 }
