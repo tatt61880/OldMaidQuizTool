@@ -60,7 +60,7 @@ button:hover {
 }
 
 #version-info {
-  color: lightgray;
+  color: gray;
   font-weight: bold;
   font-size: 0.9rem;
 }
