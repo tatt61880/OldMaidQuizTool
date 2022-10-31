@@ -9,27 +9,27 @@ body {
 
 #contents {
   width: 500px;
-  margin: auto;
   padding: 0;
+  margin: auto;
   text-align: center;
   background-color: white;
 }
 
 h1 {
   margin: 0;
-  background-color: pink;
   font-size: 18px;
+  background-color: pink;
 }
 
 h2 {
   margin: 0;
-  background-color: skyblue;
   font-size: 18px;
+  background-color: skyblue;
 }
 
 div.inner {
-  margin: 5px;
   padding-bottom: 5px;
+  margin: 5px;
 }
 
 div.skyblue {
@@ -38,15 +38,15 @@ div.skyblue {
 }
 
 button {
-  margin: 5px;
   padding: 5px 10px;
+  margin: 5px;
   font-size: 20px;
   font-weight: bold;
   color: green;
-  border-radius: 15px;
+  cursor: pointer;
   background-color: lightgreen;
   border: solid 3px green;
-  cursor: pointer;
+  border-radius: 15px;
 }
 
 button:hover {
@@ -60,7 +60,7 @@ button:hover {
 }
 
 #version-info {
-  color: gray;
-  font-weight: bold;
   font-size: 0.9rem;
+  font-weight: bold;
+  color: gray;
 }
