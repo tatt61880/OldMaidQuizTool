@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  const version = 'Version: 2022.10.29';
+  const version = 'Version: 2022.12.04';
 
   window.onload = function() {
     document.getElementById('version-info').innerText = version;
@@ -21,7 +21,7 @@
       let flag = false;
       for (let j = i + 1; j < resultText.length; j++) {
         const cj = resultText.charAt(j);
-        if (ci == cj) {
+        if (ci === cj) {
           flag = true;
           resultText = resultText.substring(0, i) + resultText.substring(i + 1, j) + resultText.substring(j + 1);
           break;
@@ -45,7 +45,7 @@
   }
 
   function setClipboard(clipboardText) {
-    if (window.navigator.clipboard == undefined) {
+    if (window.navigator.clipboard === undefined) {
       window.clipboardData.setData('Text', clipboardText);
     } else {
       window.navigator.clipboard.writeText(clipboardText);
