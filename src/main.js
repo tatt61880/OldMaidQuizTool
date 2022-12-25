@@ -1,8 +1,8 @@
-(function() {
+(function () {
   'use strict';
   const version = 'Version: 2022.12.04';
 
-  window.onload = function() {
+  window.onload = function () {
     document.getElementById('version-info').innerText = version;
     document.getElementById('input-text').addEventListener('input', update, false);
     document.getElementById('clip-result').addEventListener('click', clipResult, false);
