@@ -35,7 +35,12 @@
     document.getElementById('before').innerText = `元の文字列: 「${inputText}」(${inputText.length}文字)`;
     document.getElementById('after').innerText = `残った文字列: 「${resultText}」(${resultText.length}文字)`;
 
-    const str = resultText.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    const str = resultText
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
     document.getElementById('sub').innerHTML = `${str}(${inputText.length})`;
   }
 
