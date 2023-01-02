@@ -1,18 +1,18 @@
 {
   "private": true,
-  "name": "Showkoban",
+  "name": "old-maid-quiz-tool",
   "version": "1.0.1",
-  "description": "Showkoban by tatt61880",
+  "description": "OldMaidQuizTool by tatt61880",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tatt61880/showkoban.git"
+    "url": "git+https://github.com/tatt61880/OldMaidQuizTool.git"
   },
   "author": "@tatt61880",
   "bugs": {
-    "url": "https://github.com/tatt61880/showkoban/issues"
+    "url": "https://github.com/tatt61880/OldMaidQuizTool/issues"
   },
-  "homepage": "https://github.com/tatt61880/showkoban#readme",
+  "homepage": "https://github.com/tatt61880/OldMaidQuizTool#readme",
   "scripts": {
     "eslint": "eslint ./src/*.js --fix",
     "htmlhint": "htmlhint ./*.html",
