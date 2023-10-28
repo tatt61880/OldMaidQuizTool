@@ -20,12 +20,15 @@ body {
 h1 {
   margin: 0;
   font-size: 18px;
-  background-color: pink;
+  font-weight: bold;
+  color: #000055;
+  background-color: #c0cbff;
 }
 
 h2 {
   margin: 0;
   font-size: 18px;
+  color: #000055;
   background-color: skyblue;
 }
 
@@ -45,15 +48,15 @@ button {
   margin: 5px;
   font-size: 20px;
   font-weight: bold;
-  color: green;
+  color: #005500;
   cursor: pointer;
-  background-color: lightgreen;
+  background-color: #88ff88;
   border: solid 3px green;
   border-radius: 15px;
 }
 
 button:hover {
-  background-color: palegreen;
+  background-color: #aaffaa;
 }
 
 #input-text {
