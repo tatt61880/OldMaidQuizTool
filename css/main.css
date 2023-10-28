@@ -37,7 +37,7 @@ div.inner {
   margin: 5px;
 }
 
-div.skyblue {
+#result {
   margin-bottom: 5px;
   background-color: #f8f8ff;
   border: solid 3px skyblue;
