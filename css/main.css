@@ -19,7 +19,7 @@ body {
 
 h1 {
   margin: 0;
-  font-size: 18px;
+  font-size: 1.2rem;
   font-weight: bold;
   color: #000055;
   background-color: #c0cbff;
@@ -27,7 +27,7 @@ h1 {
 
 h2 {
   margin: 0;
-  font-size: 18px;
+  font-size: 1.3rem;
   color: #000055;
   background-color: skyblue;
 }
@@ -46,7 +46,7 @@ div.inner {
 button {
   padding: 5px 10px;
   margin: 5px;
-  font-size: 20px;
+  font-size: 1.3rem;
   font-weight: bold;
   color: #005500;
   cursor: pointer;
@@ -69,4 +69,8 @@ button:hover {
   font-size: 0.9rem;
   font-weight: bold;
   color: gray;
+}
+
+input[type="text"] {
+  border: solid 1px #808080;
 }
