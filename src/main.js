@@ -4,8 +4,12 @@
 
   window.onload = function () {
     document.getElementById('version-info').innerText = version;
-    document.getElementById('input-text').addEventListener('input', update, false);
-    document.getElementById('clip-result').addEventListener('click', clipResult, false);
+    document
+      .getElementById('input-text')
+      .addEventListener('input', update, false);
+    document
+      .getElementById('clip-result')
+      .addEventListener('click', clipResult, false);
 
     update();
   };
@@ -23,7 +27,10 @@
         const cj = resultText.charAt(j);
         if (ci === cj) {
           flag = true;
-          resultText = resultText.substring(0, i) + resultText.substring(i + 1, j) + resultText.substring(j + 1);
+          resultText =
+            resultText.substring(0, i) +
+            resultText.substring(i + 1, j) +
+            resultText.substring(j + 1);
           break;
         }
       }
@@ -32,8 +39,12 @@
       }
     }
 
-    document.getElementById('before').innerText = `元の文字列: 「${inputText}」(${inputText.length}文字)`;
-    document.getElementById('after').innerText = `残った文字列: 「${resultText}」(${resultText.length}文字)`;
+    document.getElementById(
+      'before'
+    ).innerText = `元の文字列: 「${inputText}」(${inputText.length}文字)`;
+    document.getElementById(
+      'after'
+    ).innerText = `残った文字列: 「${resultText}」(${resultText.length}文字)`;
 
     const str = resultText
       .replace(/&/g, '&amp;')
