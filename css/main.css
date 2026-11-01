@@ -74,9 +74,16 @@ h1 {
 }
 
 h1 span {
-  display: block;
+  display: inline-block;
   font-size: 0.95rem;
   font-weight: 500;
+  color: #526a70;
+}
+
+#version-info {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 400;
   color: #526a70;
 }
 
