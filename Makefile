@@ -1,7 +1,6 @@
 all: node_modules
-	npm run eslint
-	npm run htmlhint
-	npm run stylelint
+	npm test
+	npm run lint
 
-node_modules:
-	npm install
+node_modules: package.json package-lock.json
+	npm ci

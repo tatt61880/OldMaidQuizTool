@@ -4,7 +4,7 @@ const globals = require('globals');
 module.exports = [
   js.configs.recommended,
   {
-    files: ['eslint.config.js'],
+    files: ['eslint.config.js', 'tests/*.cjs'],
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: 'commonjs',

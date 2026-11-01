@@ -30,16 +30,21 @@ jobs:
         with:
           node-version: '24'
 
-      # 配信用に dist を作る（ソースはそのまま）
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check
+        run: |
+          npm test
+          npm run lint
+
+      # 公開に必要なファイルだけを dist にコピーする
       - name: Prepare dist
         run: |
           rm -rf dist
           mkdir -p dist
-          rsync -a --delete \
-            --exclude ".git" \
-            --exclude ".github" \
-            --exclude "dist" \
-            ./ dist/
+          cp index.html dist/
+          cp -R src css images dist/
 
       # dist内の .js/.css を name.<hash>.ext にリネームし、HTML参照を更新
       - name: Hash filenames and rewrite HTML

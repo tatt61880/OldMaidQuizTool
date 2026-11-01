@@ -2,42 +2,138 @@
 <html lang="ja">
 
 <head>
+  <meta charset="UTF-8" />
   <title>ババ抜きワードクイズ用ツール</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=500, user-scalable=no">
-  <link rel="icon" type="image/x-icon" href="./images/favicon.png?2023.10.28">
-  <link rel="apple-touch-icon" sizes="152x152" href="./images/apple-touch-icon.png?2023.10.28">
-
-  <link rel="stylesheet" href="./css/main.css">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="同じ文字を2つずつ取り除き、残った文字を確認できるババ抜きワードクイズの支援ツールです。" />
+  <meta name="theme-color" content="#edf6f7" />
+  <link rel="icon" type="image/png" href="./images/favicon.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="./images/apple-touch-icon.png" />
+  <link rel="stylesheet" href="./css/main.css" />
+  <script defer src="./src/quiz.js"></script>
   <script defer src="./src/main.js"></script>
 </head>
 
 <body>
-  <div id="contents">
-    <h1>ババ抜きワードクイズ用 支援ツール</h1>
-    <div class="inner">
-      <span id="version-info">　</span>
+  <main id="contents">
+    <header class="page-header">
+      <p class="eyebrow">文字をペアにして、残りを確認</p>
+      <h1>ババ抜きワードクイズ<span>支援ツール</span></h1>
+      <p class="introduction">
+        同じ文字を2つずつ取り除き、残った文字を調べます。
+      </p>
+    </header>
 
-      <div>
-        「ババ抜きワードクイズ」の支援ツールです。<br>
-        文字列を入力すると、結果が表示されます。<br>
-        自己責任でご利用ください。<br>
+    <noscript>
+      <p class="error-message">
+        このツールを使うにはJavaScriptを有効にしてください。
+      </p>
+    </noscript>
+    <p id="browser-error" class="error-message" role="alert" hidden>
+      このブラウザーでは文字を正しく数えられません。ブラウザーを更新してご利用ください。
+    </p>
+
+    <section class="panel input-panel" aria-labelledby="input-label">
+      <div class="section-heading">
+        <h2 id="input-label">
+          <label for="input-text">調べたい文字列</label>
+        </h2>
+        <div class="input-actions">
+          <button type="button" id="use-example" class="text-button">
+            例を入力
+          </button>
+          <button type="button" id="clear-input" class="text-button" disabled>
+            消去
+          </button>
+        </div>
       </div>
-
-      <input type="text" value="" id="input-text">
-
-      <div id="before"></div>
-      <div id="after"></div>
-
-      <div id="result" class="inner">
-        <h2>結果</h2>
-        <span>#ババ抜きワードクイズ</span><br>
-        <span id="sub"></span><br>
-        <button id="clip-result">結果をクリップボードにコピー</button><br>
+      <textarea id="input-text" rows="3" placeholder="ここに文字を入力・貼り付け" aria-describedby="input-help"
+        spellcheck="false"></textarea>
+      <div class="input-options">
+        <label class="checkbox-label"><input type="checkbox" id="ignore-whitespace" />空白・改行を除く</label>
+        <p id="input-help">入力すると自動で計算します。</p>
       </div>
-    </div>
-  </div>
+    </section>
+
+    <section class="panel result-panel" aria-labelledby="result-heading">
+      <div class="section-heading">
+        <h2 id="result-heading">残った文字</h2>
+        <span class="section-tag">計算結果</span>
+      </div>
+      <p id="remaining-text" class="remaining-text is-message" dir="auto">
+        文字を入力してください
+      </p>
+      <p id="whitespace-note" class="note" hidden>
+        空白・改行だけが残っています。文字ごとの内訳で確認できます。
+      </p>
+      <dl class="stats">
+        <div>
+          <dt>元の文字数</dt>
+          <dd><span id="input-count">0</span><small>文字</small></dd>
+        </div>
+        <div>
+          <dt>取り除いたペア</dt>
+          <dd><span id="pair-count">0</span><small>組</small></dd>
+        </div>
+        <div>
+          <dt>残った文字数</dt>
+          <dd><span id="remaining-count">0</span><small>文字</small></dd>
+        </div>
+      </dl>
+      <p id="ignored-count" class="note"></p>
+      <p id="result-summary" class="visually-hidden" role="status" aria-atomic="true"></p>
+      <div class="share-area">
+        <label for="share-text" class="share-label">コピーする内容</label>
+        <textarea id="share-text" rows="2" readonly spellcheck="false" placeholder="結果がここに表示されます"></textarea>
+        <button type="button" id="clip-result" class="primary-button" disabled>
+          結果をコピー
+        </button>
+        <p id="copy-status" class="copy-status" role="status" aria-atomic="true"></p>
+      </div>
+    </section>
+
+    <details id="breakdown" class="panel">
+      <summary>文字ごとの内訳</summary>
+      <p id="breakdown-empty" class="note">
+        文字を入力すると、文字ごとの出現数とペア数を確認できます。
+      </p>
+      <table id="breakdown-table" hidden>
+        <caption class="visually-hidden">
+          文字ごとの出現数・取り除いたペア数・残った文字数
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">文字</th>
+            <th scope="col">出現数</th>
+            <th scope="col">ペア</th>
+            <th scope="col">残り</th>
+          </tr>
+        </thead>
+        <tbody id="breakdown-body"></tbody>
+      </table>
+    </details>
+
+    <details class="help">
+      <summary>文字の数え方について</summary>
+      <ul>
+        <li>
+          同じ文字を前から2つずつ取り除きます。奇数回出る文字は、最後に出てきた位置に1文字残ります。
+        </li>
+        <li>
+          絵文字や結合文字は、ひとまとまりを1文字として数えます。『が』と『か＋結合用の濁点』のような、同じ文字の異なる内部表現は同一視します。
+        </li>
+        <li>ひらがな・カタカナ、全角・半角、大文字・小文字は区別します。</li>
+        <li>
+          空白や改行も数えます。「空白・改行を除く」を選ぶと、文字数にも含めません。
+        </li>
+        <li>コピーする内容の括弧内は、ペアを取り除く前の文字数です。</li>
+      </ul>
+    </details>
+
+    <footer>
+      入力した文字列はブラウザー内で処理されます。<a href="https://github.com/tatt61880/OldMaidQuizTool">GitHub</a>
+    </footer>
+  </main>
 </body>
 
 </html>

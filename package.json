@@ -15,9 +15,11 @@
   "homepage": "https://tatt61880.github.io/OldMaidQuizTool/",
   "scripts": {
     "lint": "npm run eslint && npm run htmlhint && npm run stylelint",
-    "eslint": "eslint eslint.config.js ./src/*.js --fix",
+    "eslint": "eslint eslint.config.js ./src/*.js ./tests/*.cjs .github/scripts/*.mjs",
     "htmlhint": "htmlhint ./*.html",
-    "stylelint": "stylelint ./css/*.css --fix"
+    "stylelint": "stylelint ./css/*.css",
+    "test": "node --test",
+    "lint:fix": "npm run eslint -- --fix && npm run stylelint -- --fix"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
